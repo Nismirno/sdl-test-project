@@ -2,7 +2,7 @@
 #include <string>
 #include "Globals.h"
 
-class SDL_Texture;
+struct SDL_Texture;
 
 class LTexture {
 public:
@@ -19,7 +19,7 @@ public:
 	void free();
 
 	// Renders texture at given point
-	void render(int x, int y) const;
+	void render(int x, int y, const SDL_Rect* clip = NULL) const;
 
 	// Gets image dimension
 	int getWidth() const;

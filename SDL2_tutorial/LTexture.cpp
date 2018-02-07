@@ -39,8 +39,8 @@ bool LTexture::loadFromFile(std::string path) {
 		return false;
 	}
 	// Get image dimensions
-	m_height = loadedSurface->h;
 	m_width = loadedSurface->w;
+	m_height = loadedSurface->h;
 
 	// Get rid of old loaded surface
 	SDL_FreeSurface(loadedSurface);
@@ -63,10 +63,16 @@ void LTexture::free() {
 }
 
 
-void LTexture::render(int x, int y) const {
+void LTexture::render(int x, int y, const SDL_Rect* clip) const {
 	// Set rendering space and render to screen
 	SDL_Rect renderQuad = { x, y, m_width, m_height };
-	SDL_RenderCopy(gRenderer, m_texture, NULL, &renderQuad);
+
+	// Set clip rendering dimensions
+	if (clip != NULL) {
+		renderQuad.w = clip->w;
+		renderQuad.h = clip->h;
+	}
+	SDL_RenderCopy(gRenderer, m_texture, clip, &renderQuad);
 }
 
 
