@@ -3,6 +3,7 @@
 #include "Globals.h"
 
 struct SDL_Texture;
+struct SDL_Rect;
 
 class LTexture {
 public:
@@ -17,6 +18,9 @@ public:
 
 	// Deallocate texture
 	void free();
+
+	// Set color modulation
+	void setColor(uint8_t red, uint8_t green, uint8_t blue);
 
 	// Renders texture at given point
 	void render(int x, int y, const SDL_Rect* clip = NULL) const;
