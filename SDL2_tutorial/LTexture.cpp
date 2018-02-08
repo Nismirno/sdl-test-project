@@ -1,6 +1,4 @@
 #include "LTexture.h"
-#include <SDL.h>
-#include <SDL_image.h>
 
 LTexture::LTexture() {
 	// Initialize
@@ -66,6 +64,16 @@ void LTexture::free() {
 void LTexture::setColor(uint8_t red, uint8_t green, uint8_t blue) {
 	// Modulate textures
 	SDL_SetTextureColorMod(m_texture, red, green, blue);
+}
+
+
+void LTexture::setBlendMode(SDL_BlendMode blending) {
+	SDL_SetTextureBlendMode(m_texture, blending);
+}
+
+
+void LTexture::setAlpha(uint8_t alpha) {
+	SDL_SetTextureAlphaMod(m_texture, alpha);
 }
 
 

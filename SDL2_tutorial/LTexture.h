@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <SDL.h>
+#include <SDL_image.h>
 #include "Globals.h"
 
 struct SDL_Texture;
@@ -21,6 +23,12 @@ public:
 
 	// Set color modulation
 	void setColor(uint8_t red, uint8_t green, uint8_t blue);
+
+	// Set blending
+	void setBlendMode(SDL_BlendMode blending);
+
+	// Set alpha modulation
+	void setAlpha(uint8_t alpha);
 
 	// Renders texture at given point
 	void render(int x, int y, const SDL_Rect* clip = NULL) const;
